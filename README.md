@@ -1,0 +1,2 @@
+# dojo
+Code kata exercises
