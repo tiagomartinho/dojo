@@ -83,3 +83,9 @@ def test_ignoreBigNumbers():
 
 def test_customWeirdDelimiter():
 	assert add("//[*2*]\n3*2*4")==7
+
+def test_emptySpaceAsDelimiter():
+	assert add("// \n3 2 4")==9
+
+def test_slashSlashAsDelimiter():
+	assert add("////\n3//2//4")==9
