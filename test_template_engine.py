@@ -3,15 +3,21 @@ import re
 
 def templateEngine(expression,mapOfVariables):
 	variablesInExpression=extractVariables(expression)
-	for variable in variablesInExpression:
-		if variable in mapOfVariables.keys():
-			expression = expression.replace("${"+variable+"}",mapOfVariables[variable])
-		else:
-			raise Exception("missing value exception")
-	return expression 
+	return replaceVariables(expression,mapOfVariables,variablesInExpression)
 
+REGEX_TO_EXTRACT_VARIABLES = "\${(\w*)}"
 def extractVariables(expression):
-	return list(set(re.findall("\${(\w*)}",expression)))
+	return list(set(re.findall(REGEX_TO_EXTRACT_VARIABLES,expression)))
+
+def replaceVariables(expression,mapOfVariables,variablesInExpression):
+	for variable in variablesInExpression:
+		expression = replaceVariable(expression,mapOfVariables,variable)
+	return expression
+
+def replaceVariable(expression,mapOfVariables,variable):
+	if variable in mapOfVariables.keys():
+		return expression.replace("${"+variable+"}",mapOfVariables[variable])
+	raise Exception("missing value exception")
 
 #TESTS
 def test_singleVariableExpression():
