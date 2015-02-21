@@ -24,3 +24,6 @@ def test_emptyMap():
 	with pytest.raises(Exception) as excinfo:
 		templateEngine("Hello ${name}", {}) 
 	assert excinfo.value.message == 'missing value exception'
+
+def test_complexCase():
+	assert templateEngine("Hello ${${name}}", {"name": "Tiago"}) == "Hello ${Tiago}"
