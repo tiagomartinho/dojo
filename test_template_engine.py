@@ -7,3 +7,5 @@ def templateEngine(expression,mapOfVariables):
 def test_singleVariableExpression():
 	assert templateEngine("Hello ${name}", {"name": "Tiago"}) == "Hello Tiago"
 
+def test_doubleVariableExpression():
+	assert templateEngine("Hello ${firstName} ${lastName}", {"firstName": "Tiago","lastName":"Martinho"}) == "Hello Tiago Martinho"
