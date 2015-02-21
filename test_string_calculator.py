@@ -7,15 +7,19 @@ CUSTOM_DELIMITERS = [',']
 STRING_BEGINNING="//"
 def getDelimiters(numbers):
 	delimiters=CUSTOM_DELIMITERS
-	if len(numbers)>0 and STRING_BEGINNING in numbers:
-		numbersWithoutStringBeginning = numbers.replace(STRING_BEGINNING,' ')
-		delimiters=numbersWithoutStringBeginning.split()[0]
+	if numbers.startswith(STRING_BEGINNING):
+		delimitersArgs = numbers[len(STRING_BEGINNING):numbers.find('\n')]
+		delimiters = delimitersArgs.replace("]",'')
+		delimiters = delimiters.split('[')
+		if '' in delimiters:
+			delimiters.remove('')
 	return delimiters
 
 def splitNumbers(numbers,delimiters):
-	numbers=numbers.replace(STRING_BEGINNING,' ')
+	if numbers.startswith(STRING_BEGINNING):
+		numbers = numbers[numbers.find('\n'):]
 	for delimiter in delimiters:
-		numbers=numbers.replace(delimiter,' ')
+		numbers = numbers.replace(delimiter,' ')
 	return numbers.split()
 
 def getSumResult(numbersSplitted):
@@ -26,6 +30,7 @@ def getSumResult(numbersSplitted):
 
 def convertStringToInt(number):
 	if number != "" and int(number)<=1000:
+		print(number)
 		return int(number)
 	else:
 		return 0
@@ -72,9 +77,6 @@ def test_customDelimitorsAnySize():
 def test_anyNumberCustomDelimitorse():
 	assert add("//[*][%]\n1*2%3")==6
 
-def test_anyNumberCustomDelimitorsAnySize():
-	assert add("//[***][:]\n9***1:2")==12
-
 def test_negativeNumbers():
 	assert add("//:\n-9:1:2")==-6
 
@@ -83,6 +85,9 @@ def test_ignoreBigNumbers():
 
 def test_customWeirdDelimiter():
 	assert add("//[*2*]\n3*2*4")==7
+
+def test_anyNumberCustomDelimitorsAnySize():
+	assert add("//[***][:]\n9***1:2")==12
 
 def test_emptySpaceAsDelimiter():
 	assert add("// \n3 2 4")==9
