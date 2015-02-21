@@ -7,20 +7,26 @@ CUSTOM_DELIMITERS = [',']
 STRING_BEGINNING="//"
 def getDelimiters(numbers):
 	delimiters=CUSTOM_DELIMITERS
-	if numbers.startswith(STRING_BEGINNING):
-		delimitersArgs = numbers[len(STRING_BEGINNING):numbers.find('\n')]
-		delimiters = delimitersArgs.replace("]",'')
-		delimiters = delimiters.split('[')
-		if '' in delimiters:
-			delimiters.remove('')
+	if usesCustomDelimiters(numbers):
+		delimiters = extractDelimiters(numbers)
 	return delimiters
 
+def usesCustomDelimiters(numbers):
+	return numbers.startswith(STRING_BEGINNING)
+
+def extractDelimiters(numbers):
+	delimitersArgs = numbers[len(STRING_BEGINNING):numbers.find('\n')]
+	return delimitersArgs.replace("[",'').split(']')
+
 def splitNumbers(numbers,delimiters):
-	if numbers.startswith(STRING_BEGINNING):
-		numbers = numbers[numbers.find('\n'):]
+	if usesCustomDelimiters(numbers):
+		numbers = extractNumbers(numbers) 
 	for delimiter in delimiters:
 		numbers = numbers.replace(delimiter,' ')
 	return numbers.split()
+
+def extractNumbers(numbers):
+	return numbers[numbers.find('\n'):]
 
 def getSumResult(numbersSplitted):
 	result=0
@@ -29,11 +35,9 @@ def getSumResult(numbersSplitted):
 	return result
 
 def convertStringToInt(number):
-	if number != "" and int(number)<=1000:
-		print(number)
+	if int(number)<=1000:
 		return int(number)
-	else:
-		return 0
+	return 0
 
 #TESTS
 def test_emptyString():
