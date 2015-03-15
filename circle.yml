@@ -1,0 +1,15 @@
+## Customize the test machine
+machine:
+ python:
+  version:
+   2.7.7
+
+dependencies:
+ pre:
+  - pip install -U pytest
+
+test:
+ override:
+  - py.test test_string_calculator.py 
+  - py.test test_roman_numerals.py
+  - py.test test_template_engine.py
