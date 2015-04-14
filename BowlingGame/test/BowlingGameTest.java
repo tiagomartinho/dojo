@@ -30,7 +30,7 @@ public class BowlingGameTest {
 	    assertEquals(20, g.score());
 	}
 	
-	@Test
+//	@Test
 	public void testOneSpare() throws Exception {
 		g.roll(5);
 		g.roll(5); //spare
