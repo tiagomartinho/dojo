@@ -28,20 +28,20 @@ public class Game {
 	private int sumOfBallsInFrame(int frameIndex) {
 		return rolls[frameIndex] + rolls[frameIndex + 1];
 	}
-	
-	private int strikeBonus(int frameIndex) {
-		return sumOfBallsInFrame(frameIndex + 1);
-	}
-	
-	private int spareBonus(int frameIndex) {
-		return rolls[frameIndex + 2];
-	}
 
 	private boolean isStrike(int frameIndex) {
 		return rolls[frameIndex] == 10;
 	}
 	
+	private int strikeBonus(int frameIndex) {
+		return sumOfBallsInFrame(frameIndex + 1);
+	}
+	
 	private boolean isSpare(int frameIndex) {
 		return sumOfBallsInFrame(frameIndex) == 10;
+	}
+	
+	private int spareBonus(int frameIndex) {
+		return rolls[frameIndex + 2];
 	}
 }
