@@ -10,15 +10,13 @@ public class Game {
 		int score = 0;
 		int frameIndex = 0;
 		for (int frame = 0; frame < 10; frame++) {
-			if (isStrike(frameIndex)) { //strike
+			if (isStrike(frameIndex)) {
 				score += 10 + strikeBonus(frameIndex);
 			}
 			else if (isSpare(frameIndex)) {
-				score += 10 + spareBonus(frameIndex);
-				frameIndex++;
+				score += 10 + spareBonus(frameIndex++);
 			} else {
-				score += sumOfBallsInFrame(frameIndex);
-				frameIndex++;
+				score += sumOfBallsInFrame(frameIndex++);
 			}
 			frameIndex++;
 		}
