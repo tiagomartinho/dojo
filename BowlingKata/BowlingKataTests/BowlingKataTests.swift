@@ -11,21 +11,17 @@ import XCTest
 
 class BowlingKataTests: XCTestCase {
     
-    var bowlingGame = BowlingGame()
+    var bowlingGame:BowlingGame?
     
     override func setUp() {
         super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
+        bowlingGame = BowlingGame()
     }
     
     func testEmptyGame() {
         for i in 1...20 {
-            bowlingGame.roll(0)
+            bowlingGame!.roll(0)
         }
-        XCTAssertEqual(0,bowlingGame.score())
+        XCTAssertEqual(0,bowlingGame!.score())
     }
-    
 }
