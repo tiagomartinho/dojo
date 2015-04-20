@@ -33,4 +33,12 @@ class BowlingKataTests: XCTestCase {
             bowlingGame!.roll(knockingPins)
         }
     }
+    
+    func testOneSpare() {
+        bowlingGame!.roll(5)
+        bowlingGame!.roll(5)
+        bowlingGame!.roll(3)
+        rollManyTimes(17,knockingPins:0)
+        XCTAssertEqual(16,bowlingGame!.score())
+    }
 }
