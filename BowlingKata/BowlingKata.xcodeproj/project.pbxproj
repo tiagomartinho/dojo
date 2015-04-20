@@ -13,6 +13,8 @@
 		EA9DFD901AE5244200D4C9C3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9DFD8F1AE5244200D4C9C3 /* Images.xcassets */; };
 		EA9DFD931AE5244200D4C9C3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9DFD911AE5244200D4C9C3 /* LaunchScreen.xib */; };
 		EA9DFD9F1AE5244200D4C9C3 /* BowlingKataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DFD9E1AE5244200D4C9C3 /* BowlingKataTests.swift */; };
+		EA9DFDA91AE524D100D4C9C3 /* BowlingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DFDA81AE524D100D4C9C3 /* BowlingGame.swift */; };
+		EA9DFDAA1AE524D600D4C9C3 /* BowlingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DFDA81AE524D100D4C9C3 /* BowlingGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 		EA9DFD981AE5244200D4C9C3 /* BowlingKataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BowlingKataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9DFD9D1AE5244200D4C9C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9DFD9E1AE5244200D4C9C3 /* BowlingKataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingKataTests.swift; sourceTree = "<group>"; };
+		EA9DFDA81AE524D100D4C9C3 /* BowlingGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BowlingGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +80,7 @@
 		EA9DFD851AE5244100D4C9C3 /* BowlingKata */ = {
 			isa = PBXGroup;
 			children = (
-				EA9DFD881AE5244200D4C9C3 /* AppDelegate.swift */,
-				EA9DFD8A1AE5244200D4C9C3 /* ViewController.swift */,
-				EA9DFD8C1AE5244200D4C9C3 /* Main.storyboard */,
-				EA9DFD8F1AE5244200D4C9C3 /* Images.xcassets */,
-				EA9DFD911AE5244200D4C9C3 /* LaunchScreen.xib */,
+				EA9DFDA81AE524D100D4C9C3 /* BowlingGame.swift */,
 				EA9DFD861AE5244200D4C9C3 /* Supporting Files */,
 			);
 			path = BowlingKata;
@@ -90,6 +89,11 @@
 		EA9DFD861AE5244200D4C9C3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EA9DFD881AE5244200D4C9C3 /* AppDelegate.swift */,
+				EA9DFD8A1AE5244200D4C9C3 /* ViewController.swift */,
+				EA9DFD8C1AE5244200D4C9C3 /* Main.storyboard */,
+				EA9DFD8F1AE5244200D4C9C3 /* Images.xcassets */,
+				EA9DFD911AE5244200D4C9C3 /* LaunchScreen.xib */,
 				EA9DFD871AE5244200D4C9C3 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -214,6 +218,7 @@
 			files = (
 				EA9DFD8B1AE5244200D4C9C3 /* ViewController.swift in Sources */,
 				EA9DFD891AE5244200D4C9C3 /* AppDelegate.swift in Sources */,
+				EA9DFDA91AE524D100D4C9C3 /* BowlingGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA9DFDAA1AE524D600D4C9C3 /* BowlingGame.swift in Sources */,
 				EA9DFD9F1AE5244200D4C9C3 /* BowlingKataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
