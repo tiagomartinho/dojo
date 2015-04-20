@@ -19,16 +19,18 @@ class BowlingKataTests: XCTestCase {
     }
     
     func testEmptyGame() {
-        for i in 1...20 {
-            bowlingGame!.roll(0)
-        }
+        rollManyTimes(20,knockingPins:0)
         XCTAssertEqual(0,bowlingGame!.score())
     }
     
     func testAllOnesGame() {
-        for i in 1...20 {
-            bowlingGame!.roll(1)
-        }
+        rollManyTimes(20,knockingPins:1)
         XCTAssertEqual(20,bowlingGame!.score())
+    }
+    
+    func rollManyTimes(n:Int,knockingPins:Int){
+        for i in 1...n {
+            bowlingGame!.roll(knockingPins)
+        }
     }
 }
