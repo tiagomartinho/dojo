@@ -10,13 +10,17 @@ import Foundation
 
 class BowlingGame
 {
-    private var scoreTotal = 0
+    private var rolls = [Int]()
     
     func roll(pins:Int){
-        scoreTotal += pins
+        rolls.append(pins)
     }
     
     func score()->Int{
-        return scoreTotal
+        var score = 0
+        for pins in rolls {
+            score+=pins
+        }
+        return score
     }
 }
