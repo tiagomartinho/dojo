@@ -13,7 +13,14 @@ class BowlingGame
     private var rolls = [Int]()
     
     var score:Int {
-        return rolls.reduce(0,combine: +)
+        var score = 0
+        var i = 0
+        var frames = 10
+        for _ in 0..<frames {
+            score += rolls[i] + rolls[i+1]
+            i += 2
+        }
+        return score
     }
     
     func roll(pins:Int){
