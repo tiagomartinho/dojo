@@ -12,11 +12,12 @@ class BowlingGame
 {
     private var rolls = [Int]()
     
+    private let frames = 10
+
     var score:Int {
         var score = 0
         var i = 0
-        var frames = 10
-        for _ in 0..<frames {
+        for _ in 1...frames {
             score += rolls[i] + rolls[i+1]
             i += 2
         }
