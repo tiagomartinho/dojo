@@ -16,15 +16,15 @@ class BowlingGame
 
     var score:Int {
         var score = 0
-        var i = 0
+        var frameIndex = 0
         for _ in 1...frames {
-            if rolls[i] + rolls[i+1] == 10 {
-                score += 10 + rolls[i+2]
+            if rolls[frameIndex] + rolls[frameIndex+1] == 10 {
+                score += 10 + rolls[frameIndex+2]
             }
             else{
-                score += rolls[i] + rolls[i+1]
+                score += rolls[frameIndex] + rolls[frameIndex+1]
             }
-            i += 2
+            frameIndex += 2
         }
         return score
     }
