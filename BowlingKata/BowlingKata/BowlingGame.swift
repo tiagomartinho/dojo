@@ -12,15 +12,11 @@ class BowlingGame
 {
     private var rolls = [Int]()
     
-    func roll(pins:Int){
-        rolls.append(pins)
+    var score:Int {
+        return rolls.reduce(0,combine: +)
     }
     
-    func score()->Int{
-        var score = 0
-        for pins in rolls {
-            score+=pins
-        }
-        return score
+    func roll(pins:Int){
+        rolls.append(pins)
     }
 }
