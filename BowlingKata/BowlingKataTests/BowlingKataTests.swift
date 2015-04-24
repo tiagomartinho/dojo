@@ -47,10 +47,14 @@ class BowlingKataTests: XCTestCase {
     }
     
     func testOneStrike() {
-        bowlingGame!.roll(10) //strike
+        rollStrike()
         bowlingGame!.roll(3)
         bowlingGame!.roll(4)
         rollManyTimes(16,knockingPins:0)
         XCTAssertEqual(24,bowlingGame!.score)
+    }
+    
+    func rollStrike(){
+        bowlingGame!.roll(10)
     }
 }
