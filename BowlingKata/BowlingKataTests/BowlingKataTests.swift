@@ -45,6 +45,11 @@ class BowlingKataTests: XCTestCase {
         XCTAssertEqual(24,bowlingGame!.score)
     }
     
+    func testPerfectGame() {
+        rollManyTimes(12,knockingPins:10)
+        XCTAssertEqual(300,bowlingGame!.score)
+    }
+    
     // MARK: Roll utilities methods
     
     func rollManyTimes(n:Int,knockingPins:Int){
