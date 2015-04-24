@@ -18,7 +18,7 @@ class BowlingGame
         var score = 0
         var frameIndex = 0
         for _ in 1...frames {
-            if rolls[frameIndex] + rolls[frameIndex+1] == 10 {
+            if isSpare(frameIndex) {
                 score += 10 + rolls[frameIndex+2]
             }
             else{
@@ -31,5 +31,9 @@ class BowlingGame
     
     func roll(pins:Int){
         rolls.append(pins)
+    }
+    
+    func isSpare(frameIndex:Int)->Bool{
+        return rolls[frameIndex] + rolls[frameIndex+1] == 10
     }
 }
