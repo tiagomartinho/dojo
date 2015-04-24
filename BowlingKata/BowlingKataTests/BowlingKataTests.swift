@@ -18,6 +18,8 @@ class BowlingKataTests: XCTestCase {
         bowlingGame = BowlingGame()
     }
     
+    // MARK: Tests
+
     func testEmptyGame() {
         rollManyTimes(20,knockingPins:0)
         XCTAssertEqual(0,bowlingGame!.score)
@@ -28,22 +30,11 @@ class BowlingKataTests: XCTestCase {
         XCTAssertEqual(20,bowlingGame!.score)
     }
     
-    func rollManyTimes(n:Int,knockingPins:Int){
-        for i in 1...n {
-            bowlingGame!.roll(knockingPins)
-        }
-    }
-    
     func testOneSpare() {
         rollSpare()
         bowlingGame!.roll(3)
         rollManyTimes(17,knockingPins:0)
         XCTAssertEqual(16,bowlingGame!.score)
-    }
-    
-    func rollSpare(){
-        bowlingGame!.roll(5)
-        bowlingGame!.roll(5)
     }
     
     func testOneStrike() {
@@ -52,6 +43,19 @@ class BowlingKataTests: XCTestCase {
         bowlingGame!.roll(4)
         rollManyTimes(16,knockingPins:0)
         XCTAssertEqual(24,bowlingGame!.score)
+    }
+    
+    // MARK: Roll utilities methods
+    
+    func rollManyTimes(n:Int,knockingPins:Int){
+        for i in 1...n {
+            bowlingGame!.roll(knockingPins)
+        }
+    }
+    
+    func rollSpare(){
+        bowlingGame!.roll(5)
+        bowlingGame!.roll(5)
     }
     
     func rollStrike(){
