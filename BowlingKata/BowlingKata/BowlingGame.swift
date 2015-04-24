@@ -10,10 +10,12 @@ import Foundation
 
 class BowlingGame
 {
-    private var rolls = [Int]()
+    private var rolls = [Int](count: 21, repeatedValue: 0)
     
     private let frames = 10
 
+    private var currentRoll = 0
+    
     var score:Int {
         var score = 0
         var frameIndex = 0
@@ -30,7 +32,7 @@ class BowlingGame
     }
     
     func roll(pins:Int){
-        rolls.append(pins)
+        rolls[currentRoll++]=pins
     }
     
     func isSpare(frameIndex:Int)->Bool{
