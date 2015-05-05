@@ -13,6 +13,7 @@ test:
   - py.test test_string_calculator.py 
   - py.test test_roman_numerals.py
   - py.test test_template_engine.py
+  - py.test test_bowling_game.py
 
 notify:
  webhooks:
