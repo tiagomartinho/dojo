@@ -10,6 +10,12 @@ class Game:
 #TESTS
 def test_empty_game():
 	game = Game()
-	for i in range(0,10):
+	for i in range(0,20):
 		game.roll(0)
 	assert (game.score() == 0) 
+
+def test_one_pin_game():
+	game = Game()
+	for i in range(0,20):
+		game.roll(1)
+	assert (game.score() == 20) 
