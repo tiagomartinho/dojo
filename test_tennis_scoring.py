@@ -2,10 +2,11 @@ import pytest
 
 class TennisGame:
 	PLAYER_ONE = 0
+	totalScoreP1=0
 	def add_point(self,player):
-		pass
+		self.totalScoreP1+=15
 	def score(self):
-		return (0,0) 
+		return (self.totalScoreP1,0) 
 #TESTS
 def test_empty_game():
 	game = TennisGame()
