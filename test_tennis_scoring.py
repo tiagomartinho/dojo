@@ -4,7 +4,11 @@ class TennisGame:
 	PLAYER_ONE = 0
 	totalScoreP1=0
 	def add_point(self,player):
-		self.totalScoreP1+=15
+		if(self.totalScoreP1 < 30) :
+			self.totalScoreP1 += 15
+		else :
+			self.totalScoreP1 += 10
+
 	def score(self):
 		return (self.totalScoreP1,0) 
 #TESTS
