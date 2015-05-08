@@ -1,4 +1,15 @@
 import pytest
+from enum import Enum
+
+class Score(Enum):
+	love=0
+	fifteen=15
+	thirty=30
+	forty=40
+	deuce="Deuce"
+	advantage="Advantage"
+	won="Won"
+	lost="Lost"
 
 class TennisGame:
 	PLAYER_ONE = 0
