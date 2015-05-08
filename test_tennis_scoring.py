@@ -23,7 +23,12 @@ def test_first_player_makes_first_point():
 
 def test_first_player_goes_to_match_point():
 	game = TennisGame()
-	game.add_point(TennisGame.PLAYER_ONE)
-	game.add_point(TennisGame.PLAYER_ONE)
-	game.add_point(TennisGame.PLAYER_ONE)
-	assert (game.score()[0] == 40 and game.score()[1] == 0) 
+	for i in range(0,3):
+		game.add_point(TennisGame.PLAYER_ONE)
+	assert (game.score()[0] == 40 and game.score()[1] == 0)
+
+def test_first_player_wins():
+	game = TennisGame()
+	for i in range(0,4):
+		game.add_point(TennisGame.PLAYER_ONE)
+	assert (game.score()[0] == "won" and gome.score()[1] == "lost")
