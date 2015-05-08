@@ -17,7 +17,8 @@ test:
   - py.test test_roman_numerals.py
   - py.test test_template_engine.py
   - py.test test_bowling_game.py
+  - py.test test_tennis_scoring.py
 
-notify:
- webhooks:
-  - url: http://146.185.167.197:3000/hook
+#notify:
+# webhooks:
+#  - url: http://146.185.167.197:3000/hook
