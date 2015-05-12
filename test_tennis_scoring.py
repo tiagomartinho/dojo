@@ -1,40 +1,46 @@
 import pytest
 
 class Score():
-	love=0
-	fifteen=15
-	thirty=30
-	forty=40
-	deuce="Deuce"
-	advantage="Advantage"
-	won="Won"
-	lost="Lost"
 	def toString(self):
-		return ""
+		pass
+	def nextState(self,otherPlayerScore):
+		pass
 
 class Zero(Score):
 	def toString(self):
 		return "Zero"
+	def nextState(self,otherPlayerScore):
+		return Fifteen()
 
 class Fifteen(Score):
 	def toString(self):
 		return "Fifteen"
+	def nextState(self,otherPlayerScore):
+		return Thirty()
 
 class Thirty(Score):
 	def toString(self):
 		return "Thirty"
+	def nextState(self,otherPlayerScore):
+		return Forty()
 
 class Forty(Score):
 	def toString(self):
 		return "Forty"
+	def nextState(self,otherPlayerScore):
+		return self
 
 class Won(Score):
 	def toString(self):
 		return "Won"
+	def nextState(self,otherPlayerScore):
+		return self
 
 class Lost(Score):
 	def toString(self):
 		return "Lost"
+	def nextState(self,otherPlayerScore):
+		return self
 
 class TennisGame:
 	PLAYER_ONE=0
@@ -44,12 +50,8 @@ class TennisGame:
 		if(self.totalScore[player].toString() == "Forty"):
 			self.totalScore[player] = Won()
 			self.totalScore[(player+1)%2] = Lost()
-		elif(self.totalScore[player].toString() == "Thirty") :
-			self.totalScore[player] = Forty()
-		elif(self.totalScore[player].toString() == "Fifteen") :
-			self.totalScore[player] = Thirty()
-		elif(self.totalScore[player].toString() == "Zero") :
-			self.totalScore[player] = Fifteen()
+		else:
+			self.totalScore[player] = self.totalScore[player].nextState(0)
 
 	def score(self):
 		return (self.totalScore[self.PLAYER_ONE].toString(),self.totalScore[self.PLAYER_TWO].toString()) 
