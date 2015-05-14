@@ -2,7 +2,7 @@ import pytest
 
 class Game:
 
-	rolls = [0] * 21
+	rolls = [0] * 20
 	currentRoll = 0
 
 	def roll(self,pins):
@@ -11,8 +11,10 @@ class Game:
 
 	def score(self):
 		score = 0
-		for i in range(0,len(self.rolls)):
-			score += self.rolls[i]
+		i = 0 
+		for frame in range(0,10):
+			score += self.rolls[i] + self.rolls[i+1]
+			i+=2
 		return score
 
 #TESTS
