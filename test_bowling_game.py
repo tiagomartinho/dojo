@@ -19,3 +19,13 @@ def test_one_pin_game():
 	for i in range(0,20):
 		game.roll(1)
 	assert (game.score() == 20) 
+
+def test_one_spare_game():
+	game = Game()
+	game.roll(4)
+	game.roll(6)
+	game.roll(3)
+	for i in range(0,17):
+		game.roll(0)
+	assert (game.score() == 16) 
+
