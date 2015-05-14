@@ -13,7 +13,10 @@ class Game:
 		score = 0
 		i = 0 
 		for frame in range(0,10):
-			score += self.rolls[i] + self.rolls[i+1]
+			if self.rolls[i] + self.rolls[i+1] == 10:
+				score += 10 + self.rolls[i+2]
+			else:
+				score += self.rolls[i] + self.rolls[i+1]
 			i+=2
 		return score
 
