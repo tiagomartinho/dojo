@@ -1,11 +1,18 @@
 import pytest
 
 class Game:
+	rolls = [0] * 21
+	currentRoll = 0
 	def __init__(self):
 		self.totalScore = 0
 	def roll(self,pins):
 		self.totalScore += pins
+		self.rolls[self.currentRoll] = pins 
+		self.currentRoll+=1
 	def score(self):
+		score = 0
+		for i in range(0,len(self.rolls)):
+			score += self.rolls[i]
 		return self.totalScore 
 #TESTS
 def test_empty_game():
