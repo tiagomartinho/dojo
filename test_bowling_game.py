@@ -1,7 +1,6 @@
 import pytest
 
 class Game:
-
 	rolls = [0] * 20
 	currentRoll = 0
 
@@ -13,13 +12,15 @@ class Game:
 		score = 0
 		i = 0 
 		for frame in range(0,10):
-			if self.rolls[i] + self.rolls[i+1] == 10:
+			if self.isSpare(i):
 				score += 10 + self.rolls[i+2]
 			else:
 				score += self.rolls[i] + self.rolls[i+1]
 			i+=2
 		return score
 
+	def isSpare(self,roll):
+		return self.rolls[roll] + self.rolls[roll+1] == 10
 #TESTS
 def test_empty_game():
 	game = Game()
