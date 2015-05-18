@@ -12,15 +12,24 @@ class Game:
 		score = 0
 		i = 0 
 		for frame in range(0,10):
-			if self.isSpare(i):
-				score += 10 + self.rolls[i+2]
+			if self.isStrike(i):
+				score += 10 + self.rolls[i+1] + self.rolls[i+2]
 			else:
-				score += self.rolls[i] + self.rolls[i+1]
-			i+=2
+				if self.isSpare(i):
+					score += 10 + self.rolls[i+2]
+					i+=1
+				else:
+					score += self.rolls[i] + self.rolls[i+1]
+					i+=1
+			i+=1
 		return score
 
 	def isSpare(self,roll):
 		return self.rolls[roll] + self.rolls[roll+1] == 10
+
+	def isStrike(self,roll):
+		return self.rolls[roll] == 10
+
 #TESTS
 def rollMany(game,n,pins):
 	for i in range(0,n):
