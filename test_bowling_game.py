@@ -22,24 +22,28 @@ class Game:
 	def isSpare(self,roll):
 		return self.rolls[roll] + self.rolls[roll+1] == 10
 #TESTS
+def rollMany(game,n,pins):
+	for i in range(0,n):
+		game.roll(pins)
+
+def rollSpare(game):
+	game.roll(4)
+	game.roll(6)
+
 def test_empty_game():
 	game = Game()
-	for i in range(0,20):
-		game.roll(0)
+	rollMany(game,20,0)
 	assert (game.score() == 0) 
 
 def test_one_pin_game():
 	game = Game()
-	for i in range(0,20):
-		game.roll(1)
+	rollMany(game,20,1)
 	assert (game.score() == 20) 
 
 def test_one_spare_game():
 	game = Game()
-	game.roll(4)
-	game.roll(6)
+	rollSpare(game)
 	game.roll(3)
-	for i in range(0,17):
-		game.roll(0)
+	rollMany(game,17,0)
 	assert (game.score() == 16) 
 
