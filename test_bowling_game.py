@@ -13,19 +13,22 @@ class Game:
 		frameIndex = 0 
 		for frame in range(0,10):
 			if self.isStrike(frameIndex):
-				score += 10 + self.rolls[frameIndex+1] + self.rolls[frameIndex+2]
+				score += 10 + self.strikeBonus(frameIndex) 
+				frameIndex+=1
 			else:
 				if self.isSpare(frameIndex):
 					score += 10 + self.rolls[frameIndex+2]
-					frameIndex+=1
+					frameIndex+=2
 				else:
 					score += self.rolls[frameIndex] + self.rolls[frameIndex+1]
-					frameIndex+=1
-			frameIndex+=1
+					frameIndex+=2
 		return score
 
 	def isSpare(self,roll):
 		return self.rolls[roll] + self.rolls[roll+1] == 10
+
+	def strikeBonus(self,frameIndex):
+		return self.rolls[frameIndex+1] + self.rolls[frameIndex+2]
 
 	def isStrike(self,roll):
 		return self.rolls[roll] == 10
