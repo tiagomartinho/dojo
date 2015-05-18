@@ -10,18 +10,18 @@ class Game:
 
 	def score(self):
 		score = 0
-		i = 0 
+		frameIndex = 0 
 		for frame in range(0,10):
-			if self.isStrike(i):
-				score += 10 + self.rolls[i+1] + self.rolls[i+2]
+			if self.isStrike(frameIndex):
+				score += 10 + self.rolls[frameIndex+1] + self.rolls[frameIndex+2]
 			else:
-				if self.isSpare(i):
-					score += 10 + self.rolls[i+2]
-					i+=1
+				if self.isSpare(frameIndex):
+					score += 10 + self.rolls[frameIndex+2]
+					frameIndex+=1
 				else:
-					score += self.rolls[i] + self.rolls[i+1]
-					i+=1
-			i+=1
+					score += self.rolls[frameIndex] + self.rolls[frameIndex+1]
+					frameIndex+=1
+			frameIndex+=1
 		return score
 
 	def isSpare(self,roll):
