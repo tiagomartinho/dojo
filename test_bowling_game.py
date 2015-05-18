@@ -30,6 +30,9 @@ def rollSpare(game):
 	game.roll(4)
 	game.roll(6)
 
+def rollStrike(game):
+	game.roll(10)
+
 def test_empty_game():
 	game = Game()
 	rollMany(game,20,0)
@@ -47,3 +50,10 @@ def test_one_spare_game():
 	rollMany(game,17,0)
 	assert (game.score() == 16) 
 
+def test_one_strike_game():
+	game = Game()
+	rollStrike(game)
+	game.roll(3)
+	game.roll(2)
+	rollMany(game,16,0)
+	assert (game.score() == 20) 
