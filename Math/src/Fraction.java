@@ -1,7 +1,10 @@
 
 public class Fraction {
 
-	public Fraction(int i) {
+	private int integerValue;
+
+	public Fraction(int integerValue) {
+		this.integerValue = integerValue;
 	}
 
 	public Fraction plus(Fraction fraction) {
@@ -9,7 +12,7 @@ public class Fraction {
 	}
 
 	public int intValue() {
-		return 0;
+		return this.integerValue;
 	}
 
 }
