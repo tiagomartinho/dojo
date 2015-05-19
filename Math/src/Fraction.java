@@ -5,11 +5,11 @@ public class Fraction {
 	}
 
 	public Fraction plus(Fraction fraction) {
-		return null;
+		return this;
 	}
 
 	public int intValue() {
-		return -1234;
+		return 0;
 	}
 
 }
