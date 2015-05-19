@@ -1,4 +1,3 @@
-
 public class Fraction {
 
 	private int integerValue;
@@ -8,7 +7,10 @@ public class Fraction {
 	}
 
 	public Fraction plus(Fraction fraction) {
-		return this;
+		if (fraction.integerValue != 0)
+			return fraction;
+		else
+			return this;
 	}
 
 	public int intValue() {
