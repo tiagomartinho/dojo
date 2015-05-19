@@ -6,9 +6,9 @@ public class Fraction {
 		this.integerValue = integerValue;
 	}
 
-	public Fraction plus(Fraction fraction) {
-		if (fraction.integerValue != 0)
-			return fraction;
+	public Fraction plus(Fraction that) {
+		if (that.integerValue != 0)
+			return new Fraction(this.integerValue + that.integerValue);
 		else
 			return this;
 	}
@@ -16,5 +16,4 @@ public class Fraction {
 	public int intValue() {
 		return this.integerValue;
 	}
-
 }
