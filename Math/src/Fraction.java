@@ -1,17 +1,20 @@
 public class Fraction {
 
+	final private int denominator;
 	private int integerValue;
 
 	public Fraction(int integerValue) {	
 		this.integerValue = integerValue;
+		this.denominator = 1;
 	}
 
 	public Fraction(int numerator, int denominator) {
-		// TODO Auto-generated constructor stub
+		this.integerValue = numerator;
+		this.denominator = denominator;
 	}
 
 	public Fraction plus(Fraction that) {
-		return new Fraction(this.integerValue + that.integerValue);
+		return new Fraction(this.integerValue + that.integerValue,this.denominator);
 	}
 
 	public int intValue() {
@@ -23,6 +26,6 @@ public class Fraction {
 	}
 
 	public int getDenominator() {
-		return 5;
+		return this.denominator;
 	}
 }
