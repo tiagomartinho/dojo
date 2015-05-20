@@ -2,7 +2,7 @@ public class Fraction {
 	private final int numerator;
 	private final int denominator;
 
-	public Fraction(int integerValue) {	
+	public Fraction(int integerValue) {
 		this(integerValue, 1);
 	}
 
@@ -12,7 +12,10 @@ public class Fraction {
 	}
 
 	public Fraction plus(Fraction that) {
-		return new Fraction(numerator + that.numerator,denominator);
+		if (denominator != that.denominator)
+			return new Fraction(numerator*that.denominator + that.numerator*denominator, denominator*that.denominator);
+		else
+			return new Fraction(numerator + that.numerator, denominator);
 	}
 
 	@Override
