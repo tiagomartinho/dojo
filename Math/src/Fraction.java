@@ -15,18 +15,6 @@ public class Fraction {
 		return new Fraction(numerator + that.numerator,denominator);
 	}
 
-	public int intValue() {
-		return numerator/denominator;
-	}
-
-	public int getNumerator() {
-		return numerator;
-	}
-
-	public int getDenominator() {
-		return denominator;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
