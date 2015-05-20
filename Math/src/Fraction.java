@@ -1,7 +1,6 @@
 public class Fraction {
-
-	final private int denominator;
-	final private int numerator;
+	private final int numerator;
+	private final int denominator;
 
 	public Fraction(int integerValue) {	
 		this.numerator = integerValue;
@@ -14,18 +13,18 @@ public class Fraction {
 	}
 
 	public Fraction plus(Fraction that) {
-		return new Fraction(this.numerator + that.numerator,this.denominator);
+		return new Fraction(numerator + that.numerator,denominator);
 	}
 
 	public int intValue() {
-		return this.numerator/this.denominator;
+		return numerator/denominator;
 	}
 
 	public int getNumerator() {
-		return this.numerator;
+		return numerator;
 	}
 
 	public int getDenominator() {
-		return this.denominator;
+		return denominator;
 	}
 }
