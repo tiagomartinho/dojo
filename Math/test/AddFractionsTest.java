@@ -1,9 +1,5 @@
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
-import com.sun.media.jfxmedia.events.NewFrameEvent;
-
 
 public class AddFractionsTest {
 	
@@ -38,7 +34,7 @@ public class AddFractionsTest {
 	}
 	
 	@Test
-	public void differentDenominators() throws Exception {
+	public void differentDenominatorsWithoutReducing() throws Exception {
 		assertEquals(new Fraction(5,6), new Fraction(1,2).plus(new Fraction(1,3)));
 	}
 }
