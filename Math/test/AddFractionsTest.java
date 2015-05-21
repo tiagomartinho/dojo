@@ -37,4 +37,9 @@ public class AddFractionsTest {
 	public void differentDenominatorsWithoutReducing() throws Exception {
 		assertEquals(new Fraction(5,6), new Fraction(1,2).plus(new Fraction(1,3)));
 	}
+	
+	@Test
+	public void reduceResultToWholeNumber() throws Exception {
+		assertEquals(new Fraction(1), new Fraction(1,3).plus(new Fraction(2,3)));
+	}
 }
