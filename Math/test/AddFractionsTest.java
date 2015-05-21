@@ -66,8 +66,8 @@ public class AddFractionsTest {
 		assertEquals(new Fraction(-1,8), new Fraction(3,8).plus(new Fraction(-1,2)));
 	}
 
-//	@Test
-//	public void crazyNegatives() throws Exception {
-//		assertEquals(new Fraction(1,2), new Fraction(1,-4).plus(new Fraction(-3,-4)));
-//	}
+	@Test
+	public void crazyNegatives() throws Exception {
+		assertEquals(new Fraction(1,2), new Fraction(1,-4).plus(new Fraction(-3,-4)));
+	}
 }
