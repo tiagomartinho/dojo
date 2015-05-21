@@ -54,16 +54,16 @@ class TennisGame:
 			self.totalScore[player] = self.totalScore[player].nextState(0)
 
 	def score(self):
-		return (self.totalScore[self.PLAYER_ONE].toString(),self.totalScore[self.PLAYER_TWO].toString()) 
+		return (self.totalScore[self.PLAYER_ONE].toString(),self.totalScore[self.PLAYER_TWO].toString())
 #TESTS
 def test_empty_game():
 	game = TennisGame()
-	assert (game.score()[0] == "Zero" and game.score()[1] == "Zero") 
+	assert (game.score()[0] == "Zero" and game.score()[1] == "Zero")
 
 def test_first_player_makes_first_point():
 	game = TennisGame()
 	game.add_point(TennisGame.PLAYER_ONE)
-	assert (game.score()[0] == "Fifteen" and game.score()[1] == "Zero") 
+	assert (game.score()[0] == "Fifteen" and game.score()[1] == "Zero")
 
 def test_first_player_goes_to_match_point():
 	game = TennisGame()
