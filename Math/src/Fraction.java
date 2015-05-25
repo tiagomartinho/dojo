@@ -8,14 +8,20 @@ public class Fraction {
 
 	public Fraction(int numerator, int denominator) {
 		final int signOfDenominator = denominator < 0 ? -1 : 1;
-		//gcd never returns zero
-		final int gcd = NumberTheory.gcd(numerator,denominator) * signOfDenominator;
-		this.numerator = numerator/gcd;
-		this.denominator = denominator/gcd;
+		final int gcd = NumberTheory.gcd(numerator, denominator)
+				* signOfDenominator;
+		if (gcd == 0 || denominator == 0) {
+			this.numerator = 0;
+			this.denominator = 1;
+		} else {
+			this.numerator = numerator / gcd;
+			this.denominator = denominator / gcd;
+		}
 	}
 
 	public Fraction plus(Fraction that) {
-			return new Fraction(numerator*that.denominator + that.numerator*denominator, denominator*that.denominator);
+		return new Fraction(numerator * that.denominator + that.numerator
+				* denominator, denominator * that.denominator);
 	}
 
 	@Override
