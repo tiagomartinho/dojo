@@ -56,13 +56,13 @@ def test_ninety():
 
 def test_hundred():
 	check(100,"C")
-	
+
 def test_fourHundred():
 	check(400,"CD")
-	
+
 def test_fiveHundred():
 	check(500,"D")
-	
+
 def test_nineHundred():
 	check(900,"CM")
 

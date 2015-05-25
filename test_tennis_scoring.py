@@ -46,12 +46,16 @@ class TennisGame:
 	PLAYER_ONE=0
 	PLAYER_TWO=1
 	totalScore = [Zero(),Zero()]
-	def add_point(self,player):
+    @classmethod
+	def add_point(self, player):
 		if(self.totalScore[player].toString() == "Forty"):
 			self.totalScore[player] = Won()
 			self.totalScore[(player+1)%2] = Lost()
 		else:
 			self.totalScore[player] = self.totalScore[player].nextState(0)
+        if(player == self.PLAYER_TWO):
+			self.totalScore[1] = Won()
+			self.totalScore[0] = Lost()
 
 	def score(self):
 		return (self.totalScore[self.PLAYER_ONE].toString(),self.totalScore[self.PLAYER_TWO].toString())
@@ -76,3 +80,9 @@ def test_first_player_wins():
 	for i in range(0,3):
 		game.add_point(TennisGame.PLAYER_ONE)
 	assert (game.score()[0] == "Won" and game.score()[1] == "Lost")
+
+def test_second_player_wins():
+    game = TennisGame()
+    for i in range(0,3):
+        game.add_point(TennisGame.PLAYER_TWO)
+    assert (game.score()[0] == "Lost" and game.score()[1] == "Won")

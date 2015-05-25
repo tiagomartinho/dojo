@@ -70,4 +70,9 @@ public class AddFractionsTest {
 	public void crazyNegatives() throws Exception {
 		assertEquals(new Fraction(1,2), new Fraction(1,-4).plus(new Fraction(-3,-4)));
 	}
+	
+	@Test
+	public void zeroDenominator() throws Exception {
+		assertEquals(new Fraction(1,2), new Fraction(1,4).plus(new Fraction(-3,0)));
+	}
 }
