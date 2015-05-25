@@ -15,10 +15,7 @@ public class Fraction {
 	}
 
 	public Fraction plus(Fraction that) {
-		if (denominator != that.denominator)
 			return new Fraction(numerator*that.denominator + that.numerator*denominator, denominator*that.denominator);
-		else
-			return new Fraction(numerator + that.numerator, denominator);
 	}
 
 	@Override
