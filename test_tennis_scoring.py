@@ -58,11 +58,15 @@ class TennisGame:
         self.totalScore = [Zero(),Zero()]
 
     def add_point(self, player):
+        other=(player+1)%2
         if(self.totalScore[player].toString() == "Forty"):
             self.totalScore[player] = Won()
-            self.totalScore[(player+1)%2] = Lost()
+            self.totalScore[other] = Lost()
         else:
-            self.totalScore[player] = self.totalScore[player].nextState(self.totalScore[(player+1)%2])
+            self.totalScore[player] = self.totalScore[player].nextState(self.totalScore[other])
+#            self.totalScore[other] = self.totalScore[player].updateState(self.totalScore[other])
+        if(self.totalScore[player].toString() == "Deuce"):
+                self.totalScore[other] = Deuce()
 
     def score(self):
         return (self.totalScore[self.PLAYER_ONE].toString(),self.totalScore[self.PLAYER_TWO].toString())
@@ -94,3 +98,18 @@ def test_second_player_wins():
     for i in range(0,4):
         game.add_point(TennisGame.PLAYER_TWO)
     assert (game.score()[0] == "Lost" and game.score()[1] == "Won")
+
+def test_game_goes_to_deuce():
+    game = TennisGame()
+    for i in range(0,3):
+        game.add_point(TennisGame.PLAYER_ONE)
+        game.add_point(TennisGame.PLAYER_TWO)
+    assert (game.score()[0] == "Deuce" and game.score()[1] == "Deuce")
+
+#def test_game_goes_to_deuce_p1_gets_advance():
+#    game = TennisGame()
+#    for i in range(0,3):
+#        game.add_point(TennisGame.PLAYER_ONE)
+#        game.add_point(TennisGame.PLAYER_TWO)
+#    game.add_point(TennisGame.PLAYER_ONE)
+#    assert (game.score()[0] == "Advantage" and game.score()[1] == "Deuce")
