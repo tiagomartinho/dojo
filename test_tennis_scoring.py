@@ -1,75 +1,93 @@
 import pytest
 
 class Score():
-	def toString(self):
-		pass
-	def nextState(self,otherPlayerScore):
-		pass
+ def toString(self):
+  pass
+ def nextState(self,otherPlayerScore):
+  pass
+ def updateState(self,otherPlayerScore):
+  pass
 
 class Zero(Score):
-	def toString(self):
-		return "Zero"
-	def nextState(self,otherPlayerScore):
-		return Fifteen()
+ def toString(self):
+  return "Zero"
+ def nextState(self,otherPlayerScore):
+  return Fifteen()
+ def updateState(self,otherPlayerScore):
+  pass
 
 class Fifteen(Score):
-    def toString(self):
-        return "Fifteen"
-    def nextState(self,otherPlayerScore):
-        return Thirty()
+ def toString(self):
+  return "Fifteen"
+ def nextState(self,otherPlayerScore):
+  return Thirty()
+ def updateState(self,otherPlayerScore):
+  pass
 
 class Thirty(Score):
-    def toString(self):
-        return "Thirty"
-    def nextState(self,otherPlayerScore):
-        if otherPlayerScore.toString() == Forty().toString():
-            return Deuce()
-        else:
-            return Forty()
+ def toString(self):
+  return "Thirty"
+ def nextState(self,otherPlayerScore):
+  if otherPlayerScore.toString() == Forty().toString():
+   return Deuce()
+  else:
+   return Forty()
+ def updateState(self,otherPlayerScore):
+  pass
 
 class Forty(Score):
-	def toString(self):
-		return "Forty"
-	def nextState(self,otherPlayerScore):
-		return self
+ def toString(self):
+  return "Forty"
+ def nextState(self,otherPlayerScore):
+  return self
+ def updateState(self,otherPlayerScore):
+  pass
 
 class Won(Score):
-	def toString(self):
-		return "Won"
-	def nextState(self,otherPlayerScore):
-		return self
+ def toString(self):
+  return "Won"
+ def nextState(self,otherPlayerScore):
+  return self
+ def updateState(self,otherPlayerScore):
+  pass
 
 class Lost(Score):
-	def toString(self):
-		return "Lost"
-	def nextState(self,otherPlayerScore):
-		return self
+ def toString(self):
+  return "Lost"
+ def nextState(self,otherPlayerScore):
+  return self
+ def updateState(self,otherPlayerScore):
+  pass
 
 class Deuce(Score):
-    def toString(self):
-        return "Deuce"
-        def nextState(self,otherPlayerScore):
-            return self
+ def toString(self):
+  return "Deuce"
+ def nextState(self,otherPlayerScore):
+  return self
+ def updateState(self,otherPlayerScore):
+  pass
 
 class TennisGame:
-    PLAYER_ONE=0
-    PLAYER_TWO=1
-    def __init__(self):
-        self.totalScore = [Zero(),Zero()]
+ PLAYER_ONE=0
+ PLAYER_TWO=1
+ def __init__(self):
+  self.totalScore = [Zero(),Zero()]
 
-    def add_point(self, player):
-        other=(player+1)%2
-        if(self.totalScore[player].toString() == "Forty"):
-            self.totalScore[player] = Won()
-            self.totalScore[other] = Lost()
-        else:
-            self.totalScore[player] = self.totalScore[player].nextState(self.totalScore[other])
-#            self.totalScore[other] = self.totalScore[player].updateState(self.totalScore[other])
-        if(self.totalScore[player].toString() == "Deuce"):
-                self.totalScore[other] = Deuce()
+ def add_point(self, player):
+  other=(player+1)%2
+        
+  if(self.totalScore[player].toString() == "Forty"):
+   self.totalScore[player] = Won()
+   self.totalScore[other] = Lost()
+  else:
+   self.totalScore[player] = self.totalScore[player].nextState(self.totalScore[other])
+  if(self.totalScore[player].toString() == "Deuce"):
+   self.totalScore[other] = Deuce()
+#        self.totalScore[player] = self.totalScore[player].nextState(self.totalScore[other])
+   self.totalScore[other] = self.totalScore[other].updateState(self.totalScore[player])
 
-    def score(self):
-        return (self.totalScore[self.PLAYER_ONE].toString(),self.totalScore[self.PLAYER_TWO].toString())
+ def score(self):
+  return (self.totalScore[self.PLAYER_ONE].toString(),self.totalScore[self.PLAYER_TWO].toString())
 
 #TESTS
 def test_empty_game():
