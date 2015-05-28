@@ -6,7 +6,10 @@ class Score():
  def nextState(self,otherPlayerScore):
   return self
  def updateState(self,otherPlayerScore):
-  return self
+  if otherPlayerScore.toString() == Won().toString():
+   return Lost()
+  else:
+   return self
 
 class Zero(Score):
  def toString(self):
@@ -33,7 +36,8 @@ class Forty(Score):
  def toString(self):
   return "Forty"
  def nextState(self,otherPlayerScore):
-  return self
+  if otherPlayerScore.toString() != Deuce().toString():
+   return Won()
  def updateState(self,otherPlayerScore):
   if otherPlayerScore.toString() == Deuce().toString():
    return Deuce()
@@ -60,15 +64,8 @@ class TennisGame:
 
  def add_point(self, player):
   other=(player+1)%2
-        
-  if(self.totalScore[player].toString() == "Forty"):
-   self.totalScore[player] = Won()
-   self.totalScore[other] = Lost()
-  else:
-   self.totalScore[player] = self.totalScore[player].nextState(self.totalScore[other])
-
-#        self.totalScore[player] = self.totalScore[player].nextState(self.totalScore[other])
-   self.totalScore[other] = self.totalScore[other].updateState(self.totalScore[player])
+  self.totalScore[player] = self.totalScore[player].nextState(self.totalScore[other])
+  self.totalScore[other] = self.totalScore[other].updateState(self.totalScore[player])
 
  def score(self):
   return (self.totalScore[self.PLAYER_ONE].toString(),self.totalScore[self.PLAYER_TWO].toString())
