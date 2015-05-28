@@ -50,7 +50,13 @@ class Deuce(Score):
  def toString(self):
   return "Deuce"
  def nextState(self,otherPlayerScore):
-  return self
+  return Advantage()
+
+class Advantage(Score):
+ def toString(self):
+  return "Advantage"
+ def nextState(self,otherPlayerScore):
+  return Won()
 
 class Lost(Score):
  def toString(self):
@@ -105,10 +111,19 @@ def test_game_goes_to_deuce():
         game.add_point(TennisGame.PLAYER_TWO)
     assert (game.score()[0] == "Deuce" and game.score()[1] == "Deuce")
 
-#def test_game_goes_to_deuce_p1_gets_advance():
-#    game = TennisGame()
-#    for i in range(0,3):
-#        game.add_point(TennisGame.PLAYER_ONE)
-#        game.add_point(TennisGame.PLAYER_TWO)
-#    game.add_point(TennisGame.PLAYER_ONE)
-#    assert (game.score()[0] == "Advantage" and game.score()[1] == "Deuce")
+def test_game_goes_to_deuce_p1_gets_advance():
+    game = TennisGame()
+    for i in range(0,3):
+        game.add_point(TennisGame.PLAYER_ONE)
+        game.add_point(TennisGame.PLAYER_TWO)
+    game.add_point(TennisGame.PLAYER_ONE)
+    assert (game.score()[0] == "Advantage" and game.score()[1] == "Deuce")
+
+def test_game_goes_to_deuce_p1_gets_advance_and_wins():
+    game = TennisGame()
+    for i in range(0,3):
+        game.add_point(TennisGame.PLAYER_ONE)
+        game.add_point(TennisGame.PLAYER_TWO)
+    game.add_point(TennisGame.PLAYER_ONE)
+    game.add_point(TennisGame.PLAYER_ONE)
+    assert (game.score()[0] == "Won" and game.score()[1] == "Lost")
