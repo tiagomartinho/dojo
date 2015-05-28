@@ -50,13 +50,18 @@ class Deuce(Score):
  def toString(self):
   return "Deuce"
  def nextState(self,otherPlayerScore):
-  return Advantage()
+  if otherPlayerScore.toString() != Advantage().toString():
+   return Advantage()
+  else:
+   return self
 
 class Advantage(Score):
  def toString(self):
   return "Advantage"
  def nextState(self,otherPlayerScore):
   return Won()
+ def updateState(self,otherPlayerScore):
+  return Deuce()
 
 class Lost(Score):
  def toString(self):
