@@ -4,25 +4,21 @@ class Score():
  def toString(self):
   pass
  def nextState(self,otherPlayerScore):
-  pass
+  return self
  def updateState(self,otherPlayerScore):
-  pass
+  return self
 
 class Zero(Score):
  def toString(self):
   return "Zero"
  def nextState(self,otherPlayerScore):
   return Fifteen()
- def updateState(self,otherPlayerScore):
-  pass
 
 class Fifteen(Score):
  def toString(self):
   return "Fifteen"
  def nextState(self,otherPlayerScore):
   return Thirty()
- def updateState(self,otherPlayerScore):
-  pass
 
 class Thirty(Score):
  def toString(self):
@@ -32,8 +28,6 @@ class Thirty(Score):
    return Deuce()
   else:
    return Forty()
- def updateState(self,otherPlayerScore):
-  pass
 
 class Forty(Score):
  def toString(self):
@@ -41,31 +35,22 @@ class Forty(Score):
  def nextState(self,otherPlayerScore):
   return self
  def updateState(self,otherPlayerScore):
-  pass
+  if otherPlayerScore.toString() == Deuce().toString():
+   return Deuce()
 
 class Won(Score):
  def toString(self):
   return "Won"
- def nextState(self,otherPlayerScore):
-  return self
- def updateState(self,otherPlayerScore):
-  pass
-
-class Lost(Score):
- def toString(self):
-  return "Lost"
- def nextState(self,otherPlayerScore):
-  return self
- def updateState(self,otherPlayerScore):
-  pass
 
 class Deuce(Score):
  def toString(self):
   return "Deuce"
  def nextState(self,otherPlayerScore):
   return self
- def updateState(self,otherPlayerScore):
-  pass
+
+class Lost(Score):
+ def toString(self):
+  return "Lost"
 
 class TennisGame:
  PLAYER_ONE=0
@@ -81,8 +66,7 @@ class TennisGame:
    self.totalScore[other] = Lost()
   else:
    self.totalScore[player] = self.totalScore[player].nextState(self.totalScore[other])
-  if(self.totalScore[player].toString() == "Deuce"):
-   self.totalScore[other] = Deuce()
+
 #        self.totalScore[player] = self.totalScore[player].nextState(self.totalScore[other])
    self.totalScore[other] = self.totalScore[other].updateState(self.totalScore[player])
 
