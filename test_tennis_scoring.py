@@ -127,3 +127,13 @@ def test_game_goes_to_deuce_p1_gets_advance_and_wins():
     game.add_point(TennisGame.PLAYER_ONE)
     game.add_point(TennisGame.PLAYER_ONE)
     assert (game.score()[0] == "Won" and game.score()[1] == "Lost")
+
+def test_game_goes_to_deuce_p1_gets_advance_and_loses_it():
+    game = TennisGame()
+    for i in range(0,3):
+        game.add_point(TennisGame.PLAYER_ONE)
+        game.add_point(TennisGame.PLAYER_TWO)
+    game.add_point(TennisGame.PLAYER_ONE)
+    assert (game.score()[0] == "Advantage" and game.score()[1] == "Deuce")
+    game.add_point(TennisGame.PLAYER_TWO)
+    assert (game.score()[0] == "Deuce" and game.score()[1] == "Deuce")
