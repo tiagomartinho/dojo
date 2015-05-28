@@ -91,6 +91,12 @@ def test_first_player_makes_first_point():
 	game.add_point(TennisGame.PLAYER_ONE)
 	assert (game.score()[0] == "Fifteen" and game.score()[1] == "Zero")
 
+def test_first_player_makes_second_point():
+    game = TennisGame()
+    for i in range(0,2):
+     game.add_point(TennisGame.PLAYER_ONE)
+    assert (game.score()[0] == "Thirty" and game.score()[1] == "Zero")
+
 def test_first_player_goes_to_match_point():
 	game = TennisGame()
 	for i in range(0,3):
